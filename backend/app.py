@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
+from database import engine, SessionLocal
+import models
 
 def create_app() -> FastAPI:
     
@@ -15,6 +17,8 @@ def create_app() -> FastAPI:
                        allow_credentials=True,
                        allow_methods={"*"},
                        allow_headers=["*"])
+    
+    models.Base.metadata.create_all(bind=engine)
 
     
     
@@ -23,4 +27,4 @@ def create_app() -> FastAPI:
 
 if __name__ == "__main__":
     app = create_app()
-    uvicorn.run(app, host="127.0.0.1", port="5000")
+    uvicorn.run(app, host="127.0.0.1", port="8000")
