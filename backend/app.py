@@ -1,15 +1,14 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from config.config import Settings
 import uvicorn
 
 def create_app() -> FastAPI:
-    #config the settings
-    settings = Settings()
+    
      
     app = FastAPI(title="Notes API",
                   description="API beckaned for personal notes.",
                   version="1.0.0")
+    
     
     app.add_middleware(CORSMiddleware, 
                        allow_origins=["*"],
