@@ -5,3 +5,7 @@ from config.config import Settings
 
 settings = Settings()
 
+
+Base = declarative_base()
+engine = create_engine(settings.SQLALCHEMY_DATABASE_URI, echo=True)
+SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False)
