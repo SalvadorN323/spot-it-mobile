@@ -10,7 +10,4 @@ class UserBase(BaseModel):
         orm_mode = True
     
 class UserCreate(UserBase):
-    
-    email: EmailStr
-    name: str
     hashed_password: str

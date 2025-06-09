@@ -1,8 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
-from database import engine, SessionLocal
 import models
+from database.database import Base, engine
+
+
 
 def create_app() -> FastAPI:
     
@@ -18,7 +20,7 @@ def create_app() -> FastAPI:
                        allow_methods={"*"},
                        allow_headers=["*"])
     
-    models.Base.metadata.create_all(bind=engine)
+    Base.metadata.create_all(bind=engine)
 
     
     
