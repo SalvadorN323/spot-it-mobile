@@ -5,7 +5,6 @@ import models
 from database.database import Base, engine
 
 
-
 def create_app() -> FastAPI:
     
      
